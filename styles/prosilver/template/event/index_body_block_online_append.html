@@ -1,0 +1,290 @@
+<!-- IF CARDS_SHOW_BLOCK -->
+<div class="forabg">
+    <div class="inner">
+        <ul class="topiclist">
+            <li class="header">
+                <dl class="row-item">
+                    <dt>
+                        <div class="list-inner">
+                            <a href="{U_CARDS_CATALOG}" class="forumtitle">🎴 {L_LATEST_CARDS_TITLE}</a>
+                        </div>
+                    </dt>
+                    <dd class="posts">{L_TOTAL_CARDS}</dd>
+                    <dd class="lastpost"><span>{L_TOTAL_COLLECTORS}</span></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="cards-showcase">
+    <div class="cards-grid">
+        <!-- BEGIN latest_cards -->
+        <div class="card-item">
+            <a href="{latest_cards.U_CARD_VIEW}" class="card-link">
+                <div class="card-image">
+                    <!-- IF latest_cards.IMAGE_FRONT -->
+                        <img src="{ROOT_PATH}files/cards/{latest_cards.IMAGE_FRONT}" alt="{latest_cards.CARD_TITLE}" loading="lazy">
+                    <!-- ELSE -->
+                        <div class="card-placeholder">
+                            <span class="card-placeholder-icon">🎴</span>
+                            <span class="card-placeholder-text">{L_NO_IMAGE}</span>
+                        </div>
+                    <!-- ENDIF -->
+                    
+                    <div class="card-rarity card-rarity-{latest_cards.CARD_RARITY}">
+                        {latest_cards.CARD_RARITY}
+                    </div>
+                </div>
+                
+                <div class="card-info">
+                    <h3 class="card-player">{latest_cards.PLAYER_USERNAME}</h3>
+                    <p class="card-year">{latest_cards.CARD_YEAR} - {latest_cards.CARD_VERSION}</p>
+                    <p class="card-title">{latest_cards.CARD_TITLE}</p>
+                    <!-- IF latest_cards.CARD_SERIES -->
+                    <p class="card-series">📦 {latest_cards.CARD_SERIES}</p>
+                    <!-- ENDIF -->
+                    <p class="card-meta">
+                        <span class="card-time">🕐 {latest_cards.CREATION_TIME}</span>
+                        <!-- IF latest_cards.U_CREATOR_PROFILE -->
+                        <br><span class="card-creator">
+                            {L_BY} 
+                            <a href="{latest_cards.U_CREATOR_PROFILE}" 
+                               style="<!-- IF latest_cards.CREATOR_COLOUR -->color: #{latest_cards.CREATOR_COLOUR};<!-- ENDIF -->"
+                               class="username">
+                                {latest_cards.CREATOR_USERNAME}
+                            </a>
+                        </span>
+                        <!-- ENDIF -->
+                    </p>
+                </div>
+            </a>
+        </div>
+        <!-- END latest_cards -->
+    </div>
+    
+    <div class="cards-cta">
+        <div class="cards-cta-content">
+            <h3>{L_JOIN_COMMUNITY}</h3>
+            <p>{L_CARDS_CTA_DESCRIPTION}</p>
+            <div class="cards-cta-buttons">
+                <!-- IF not S_USER_LOGGED_IN -->
+                <a href="{U_CARDS_REGISTER}" class="button button-primary">{L_REGISTER}</a>
+                <a href="{U_LOGIN_LOGOUT_URL}" class="button button-secondary">{L_LOGIN}</a>
+                <!-- ELSE -->
+                <a href="{U_CARDS_CATALOG}" class="button button-primary">{L_VIEW_ALL_CARDS}</a>
+                <a href="{U_UCP}" class="button button-secondary">{L_MY_COLLECTION}</a>
+                <!-- ENDIF -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.cards-showcase {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-item {
+    background: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: #e8e8e8;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #999;
+}
+
+.card-placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.card-placeholder-text {
+    font-size: 0.9rem;
+}
+
+.card-rarity {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background: rgba(0,0,0,0.6);
+}
+
+.card-rarity-common { background: #9E9E9E; }
+.card-rarity-rare { background: #2196F3; }
+.card-rarity-ultra_rare { background: #9C27B0; }
+.card-rarity-legendary { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; }
+
+.card-info {
+    padding: 12px;
+}
+
+.card-player {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.card-year {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 8px 0;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+    color: #444;
+}
+
+.card-series {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 5px 0;
+}
+
+.card-meta {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #e1e1e1;
+}
+
+.card-time {
+    display: block;
+}
+
+.card-creator {
+    display: inline-block;
+}
+
+.cards-cta {
+    background: linear-gradient(135deg, #2D5016, #3D6B1F);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.cards-cta-content h3 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    color: white;
+}
+
+.cards-cta-content p {
+    margin: 0 0 20px 0;
+    color: rgba(255,255,255,0.9);
+}
+
+.cards-cta-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cards-cta-buttons .button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.button-primary {
+    background: #FFD700;
+    color: #333;
+}
+
+.button-primary:hover {
+    background: #FFC700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.button-secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.button-secondary:hover {
+    background: white;
+    color: #2D5016;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    
+    .card-image {
+        height: 200px;
+    }
+    
+    .cards-cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cards-cta-buttons .button {
+        width: 100%;
+    }
+}
+</style>
+<!-- ENDIF -->

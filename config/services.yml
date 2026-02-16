@@ -1,0 +1,17 @@
+services:
+    verturin.cardcollection.listener:
+        class: verturin\cardcollection\event\main_listener
+        arguments:
+            - '@template'
+            - '@dbal.conn'
+            - '@config'
+            - '@user'
+            - '@path_helper'
+            - '%core.php_ext%'
+            - '%tables.cards%'
+            - '%core.table_prefix%users'
+        tags:
+            - { name: event.listener }
+
+parameters:
+    tables.cards: '%core.table_prefix%cards'

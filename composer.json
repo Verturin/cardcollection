@@ -1,0 +1,42 @@
+{
+    "name": "verturin/cardcollection",
+    "type": "phpbb-extension",
+    "description": "Card Collection Management System - Manage your card collection, create wishlists, trade with other collectors. Perfect for Geocaching cards, trading cards, and any collectible cards.",
+    "homepage": "https://github.com/verturin/cardcollection",
+    "version": "1.0.0",
+    "keywords": [
+        "phpbb",
+        "extension",
+        "cards",
+        "collection",
+        "geocaching",
+        "trading",
+        "collectibles"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Verturin",
+            "homepage": "https://github.com/verturin",
+            "role": "Lead Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "composer/installers": "~1.0"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev-master"
+    },
+    "extra": {
+        "display-name": "Card Collection",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.0"
+        },
+        "version-check": {
+            "host": "github.com",
+            "directory": "/verturin/cardcollection",
+            "filename": "version.json"
+        }
+    }
+}
